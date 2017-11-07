@@ -18,6 +18,60 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GHLMainWindow.cpp" />
+    <ClCompile Include="GHLoader.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="XGui\XButton.cpp" />
+    <ClCompile Include="XGui\XCheckBox.cpp" />
+    <ClCompile Include="XGui\XComboBox.cpp" />
+    <ClCompile Include="XGui\XControl.cpp" />
+    <ClCompile Include="XGui\XControls.cpp" />
+    <ClCompile Include="XGui\XDialog.cpp" />
+    <ClCompile Include="XGui\XEdit.cpp" />
+    <ClCompile Include="XGui\XFileDialog.cpp" />
+    <ClCompile Include="XGui\XFont.cpp" />
+    <ClCompile Include="XGui\XGroupBox.cpp" />
+    <ClCompile Include="XGui\XLabel.cpp" />
+    <ClCompile Include="XGui\XListBox.cpp" />
+    <ClCompile Include="XGui\XListView.cpp" />
+    <ClCompile Include="XGui\XMainWindow.cpp" />
+    <ClCompile Include="XGui\XOwnerDrawControl.cpp" />
+    <ClCompile Include="XGui\XRadioButton.cpp" />
+    <ClCompile Include="XGui\XRichText.cpp" />
+    <ClCompile Include="XGui\XSysLink.cpp" />
+    <ClCompile Include="XGui\XTabControl.cpp" />
+    <ClCompile Include="XGui\XTrackBar.cpp" />
+    <ClCompile Include="XGui\XWindow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GHLMainWindow.h" />
+    <ClInclude Include="GHLoader.h" />
+    <ClInclude Include="Includes\stdafx.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="XGui\XButton.h" />
+    <ClInclude Include="XGui\XCheckBox.h" />
+    <ClInclude Include="XGui\XComboBox.h" />
+    <ClInclude Include="XGui\XControl.h" />
+    <ClInclude Include="XGui\XControls.h" />
+    <ClInclude Include="XGui\XDialog.h" />
+    <ClInclude Include="XGui\XEdit.h" />
+    <ClInclude Include="XGui\XFileDialog.h" />
+    <ClInclude Include="XGui\XFont.h" />
+    <ClInclude Include="XGui\XGroupBox.h" />
+    <ClInclude Include="XGui\XLabel.h" />
+    <ClInclude Include="XGui\XListBox.h" />
+    <ClInclude Include="XGui\XListView.h" />
+    <ClInclude Include="XGui\XMainWindow.h" />
+    <ClInclude Include="XGui\XOwnerDrawControl.h" />
+    <ClInclude Include="XGui\XRadioButton.h" />
+    <ClInclude Include="XGui\XRichText.h" />
+    <ClInclude Include="XGui\XSysLink.h" />
+    <ClInclude Include="XGui\XTabControl.h" />
+    <ClInclude Include="XGui\XTrackBar.h" />
+    <ClInclude Include="XGui\XWindow.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A31E5DD2-DC32-42E4-8AF9-5CB20E383248}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -71,12 +125,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>X:\My Programs\C++ Projects\GHLoader_v2\GHLoader_v2\Includes;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>X:\My Programs\C++ Projects\GHLoader_v2\GHLoader_v2\Includes;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -141,8 +197,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
