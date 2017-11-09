@@ -9,6 +9,17 @@ LRESULT CALLBACK DialogWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPara
 {
 	switch (uMsg)
 	{
+		case WM_KEYUP:
+		{
+			switch (wParam)
+			{
+				case VK_ESCAPE:
+				{
+					mDialogsH[hWnd]->Destroy();
+					break;
+				}
+			}
+		}
 		case WM_DESTROY:
 		case WM_CLOSE:
 		{
