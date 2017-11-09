@@ -42,7 +42,8 @@ int CXButton::OnCommand(WPARAM wParam, LPARAM lParam)
 {
 	if (HIWORD(wParam) == BN_CLICKED)
 	{
-		fnAction(pCommandArgs);
+		if(fnAction)
+			fnAction(pCommandArgs);
 	}
 	return 0;
 }

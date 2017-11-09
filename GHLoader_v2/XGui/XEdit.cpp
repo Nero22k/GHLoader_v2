@@ -4,8 +4,8 @@ CXEdit::CXEdit(CXWindow * pOwner, XID xID, int x, int y, int w, int h, tstring s
 	: CXControl(pOwner, xID, EDIT, x, y, w, h, szText, pFont)
 {
 	szClass = _T("EDIT");
-	SetStyle(WS_XEDIT);
-	this->bMultiLine;
+	SetStyle(WS_XEDITML);
+	this->bMultiLine = true;
 }
 
 CXEdit::~CXEdit()

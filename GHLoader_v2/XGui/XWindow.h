@@ -35,7 +35,10 @@ public:
 	virtual UINT GetHeight();
 	virtual HICON GetIcon();
 	virtual HICON GetIconSm();
-	
+	virtual WINDOWPOS GetPos();
+	virtual DWORD GetStyle();
+	virtual RECT & GetWndRect();
+
 	virtual void SetOwnerWindow(CXWindow* pWindow);
 	virtual void SetBgColor(COLORREF clColor);
 	virtual void SetStyle(DWORD dwStyle);
@@ -58,6 +61,7 @@ protected:
 	HBRUSH		hBgr;
 	COLORREF	clBgr;
 	RECT		rcRect;
+	RECT		rcWindow;
 	UINT		uWidth;
 	UINT		uHeight;
 	tstring		szClass;

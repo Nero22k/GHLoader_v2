@@ -13,7 +13,7 @@
 #include "XSysLink.h"
 #include "XLabel.h"
 #include "XDialog.h"
-
+#include "XBitmap.h"
 
 class CXControlGroup;
 
@@ -72,10 +72,10 @@ public:
 template<class T>
 inline T* CXControls::AddControl(XID id, int x, int y, int w, int h, tstring szText, CXFont * pFont)
 {
-	RECT rc = { x, y, x + w, y + h };
-	AdjustWindowRect(&rc, WS_SYSMENU, FALSE);
-	//mControls[id] = new T(pOwner, id, rc.left, rc.top, rc.right, rc.bottom, szText, pFont);
-	mControls[id] = new T(pOwner, id, x, y, w, h, szText, pFont);
+	RECT rc = { x, y, w, h };
+	AdjustWindowRect(&rc, WS_VISIBLE | WS_CHILD, FALSE);
+	mControls[id] = new T(pOwner, id, rc.left, rc.top, rc.right, rc.bottom, szText, pFont);
+	//mControls[id] = new T(pOwner, id, x, y, w, h, szText, pFont);
 	T* pControl = GetControl<T>(id);
 	pControl->Create();
 	return pControl;

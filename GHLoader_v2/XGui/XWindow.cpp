@@ -164,6 +164,22 @@ HICON CXWindow::GetIconSm()
 	return hIconSm;
 }
 
+WINDOWPOS CXWindow::GetPos()
+{
+	return wpPos;
+}
+
+DWORD CXWindow::GetStyle()
+{
+	return dwStyle;
+}
+
+RECT & CXWindow::GetWndRect()
+{
+	GetWindowRect(hWnd, &rcWindow);
+	return rcWindow;
+}
+
 void CXWindow::SetOwnerWindow(CXWindow * pWindow)
 {
 	this->pOwnerWindow = pWindow;
@@ -204,6 +220,8 @@ void CXWindow::SetRect(RECT rcRect)
 	WINDOWPOS pos;
 	pos.x = rcRect.left;
 	pos.y = rcRect.top;
+	pos.cx = uWidth;
+	pos.cy = uHeight;
 	SetPos(pos);
 }
 
@@ -234,5 +252,6 @@ void CXWindow::SetPos(int x, int y)
 	pos.x = x;
 	pos.y = y;
 	this->wpPos = pos;
+	SetWindowPos(hWnd, NULL, pos.x, pos.y, 0, 0, SWP_NOSIZE);
 }
 

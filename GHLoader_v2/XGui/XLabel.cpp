@@ -35,7 +35,9 @@ LRESULT CXLabel::OnDrawItem(WPARAM wParam, LPARAM lParam)
 	if (pFont)
 		pFont->SetFont(pDi->hDC);
 
-	DrawText(pDi->hDC, szText.c_str(), szText.length(), &GetRect(), dwFlags);
+	AdjustWindowRect(&GetRect(), WS_VISIBLE, FALSE);
+	rcRect.left -= 5;
+	DrawText(pDi->hDC, szText.c_str(), szText.length(), &rcRect, dwFlags);
 	return 0;
 }
 

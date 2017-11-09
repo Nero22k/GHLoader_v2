@@ -1,4 +1,5 @@
 #include "XDialog.h"
+#include "XControls.h"
 
 std::map<XDialogID, CXDialog*> mDialogs;
 std::map<HWND, CXDialog*> mDialogsH;
@@ -50,10 +51,20 @@ bool CXDialog::Create()
 	if (!bRet)
 		return false;
 	mDialogsH[hWnd] = this;
+	xControls = new CXControls(this);
 	return true;
+}
+
+void CXDialog::Show()
+{
+	if (!hWnd)
+		Create();
+	ShowWindow(hWnd, SW_SHOW);
+	bShown = true;
 }
 
 void CXDialog::Destroy()
 {
 	ShowWindow(hWnd, SW_HIDE);
+	bShown = false;
 }

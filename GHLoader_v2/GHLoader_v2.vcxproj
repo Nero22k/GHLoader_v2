@@ -19,10 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GHLInfoWindow.cpp" />
     <ClCompile Include="GHLMainWindow.cpp" />
     <ClCompile Include="GHLoader.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Process.cpp" />
+    <ClCompile Include="ProcManager.cpp" />
+    <ClCompile Include="ResourceWriter.cpp" />
     <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="XGui\XBitmap.cpp" />
     <ClCompile Include="XGui\XButton.cpp" />
     <ClCompile Include="XGui\XCheckBox.cpp" />
     <ClCompile Include="XGui\XComboBox.cpp" />
@@ -46,10 +50,15 @@
     <ClCompile Include="XGui\XWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GHLInfoWindow.h" />
     <ClInclude Include="GHLMainWindow.h" />
     <ClInclude Include="GHLoader.h" />
     <ClInclude Include="Includes\stdafx.h" />
-    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Process.h" />
+    <ClInclude Include="ProcManager.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="ResourceWriter.h" />
+    <ClInclude Include="XGui\XBitmap.h" />
     <ClInclude Include="XGui\XButton.h" />
     <ClInclude Include="XGui\XCheckBox.h" />
     <ClInclude Include="XGui\XComboBox.h" />
@@ -71,6 +80,18 @@
     <ClInclude Include="XGui\XTabControl.h" />
     <ClInclude Include="XGui\XTrackBar.h" />
     <ClInclude Include="XGui\XWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GHLoader_v2.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DX9HookHelper.dll" />
+    <None Include="GH Injector - x64.exe">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="GH Injector - x86.exe">
+      <FileType>Document</FileType>
+    </None>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A31E5DD2-DC32-42E4-8AF9-5CB20E383248}</ProjectGuid>

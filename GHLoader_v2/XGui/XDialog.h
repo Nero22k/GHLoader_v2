@@ -14,10 +14,12 @@ public:
 	~CXDialog();
 
 	virtual bool Create();
+	virtual void Show();
 	virtual void Destroy();
 protected:
 	CXControls* xControls;
 	XDialogID xDialogID;
+	bool bShown = false;
 };
 
 

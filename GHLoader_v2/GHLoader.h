@@ -1,6 +1,7 @@
 #pragma once
 #include "GHLMainWindow.h"
-
+#include "ProcManager.h"
+#include "ResourceWriter.h"
 class GHLoader
 {
 public:
@@ -8,12 +9,22 @@ public:
 	~GHLoader();
 
 	bool IsDlgMessage(MSG * pMsg);
+	void LoadCheat();
 
 private:
-	int CreateMainWindow();
-
+	GHLFormInfo GHLGetForm();
+	void WriteInj();
+	void WriteDll();
 public:
+private:
 	std::vector<CXWindow*> vWindows;
+	HINSTANCE hInstance;
 	GHLMainWindow * pWnd;
+	GHLFormInfo formInfo;
+	
+	ProcManager pm;
+	std::thread thLoad;
+	tstring szTarget;
+	CProcess cpProcess;
 };
 

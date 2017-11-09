@@ -11,7 +11,7 @@
 #include <Uxtheme.h>
 #include <vsstyle.h>
 #include <chrono>
-
+#include <thread>
 #include <Psapi.h>
 #include <TlHelp32.h>
 
@@ -31,26 +31,6 @@ typedef std::wstring tstring;
 typedef std::string tstring;
 #endif
 
+typedef UINT uint;
+
 #define DEFLANGID MAKELANGID(LANG_NEUTRAL, SUBLANG_NEUTRAL)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

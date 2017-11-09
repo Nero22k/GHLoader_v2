@@ -16,7 +16,8 @@ enum ECXControl
 	LISTVIEW,
 	RICHTEXT,
 	TRACKBAR,
-	SYSLINK
+	SYSLINK,
+	IMAGE
 };
 
 class CXControl : public CXWindow
