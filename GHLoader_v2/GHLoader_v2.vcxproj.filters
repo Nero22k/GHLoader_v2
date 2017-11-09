@@ -31,20 +31,8 @@
     <Filter Include="Header Files\Utility">
       <UniqueIdentifier>{5b66bae2-ccbc-464a-a5e7-dbf66b2e9ce6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Utility\ResourceHelp">
-      <UniqueIdentifier>{dabe7ccd-cdd1-4098-93b9-83f03230cc0d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Utility\Process">
-      <UniqueIdentifier>{61519798-862e-4f14-b508-0edc4a1dbf04}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Utility">
       <UniqueIdentifier>{d938b503-5d86-41b3-bbef-ebc7bf91cadf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Utility\Process">
-      <UniqueIdentifier>{8b27a98a-49ff-4a3f-b6cb-7ccef0d26ec1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Utility\ResourceHelp">
-      <UniqueIdentifier>{8c4ea444-cc92-40d0-b28f-b8010ed84cde}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -126,14 +114,14 @@
     <ClCompile Include="GHLoader.cpp">
       <Filter>Source Files\GHLoader</Filter>
     </ClCompile>
+    <ClCompile Include="XResource.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
     <ClCompile Include="Process.cpp">
-      <Filter>Source Files\Utility\Process</Filter>
+      <Filter>Source Files\Utility</Filter>
     </ClCompile>
     <ClCompile Include="ProcManager.cpp">
-      <Filter>Source Files\Utility\Process</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceWriter.cpp">
-      <Filter>Source Files\Utility\ResourceHelp</Filter>
+      <Filter>Source Files\Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -209,12 +197,6 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Process.h">
-      <Filter>Header Files\Utility\Process</Filter>
-    </ClInclude>
-    <ClInclude Include="ProcManager.h">
-      <Filter>Header Files\Utility\Process</Filter>
-    </ClInclude>
     <ClInclude Include="GHLInfoWindow.h">
       <Filter>Header Files\GHLoader</Filter>
     </ClInclude>
@@ -224,8 +206,14 @@
     <ClInclude Include="GHLoader.h">
       <Filter>Header Files\GHLoader</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceWriter.h">
-      <Filter>Header Files\Utility\ResourceHelp</Filter>
+    <ClInclude Include="XResource.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Process.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcManager.h">
+      <Filter>Header Files\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

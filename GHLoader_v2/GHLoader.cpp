@@ -35,6 +35,8 @@ bool GHLoader::IsDlgMessage(MSG * pMsg)
 
 void GHLoader::LoadCheat()
 {
+	//this function is called from another thread.
+	//modifies a few labels and shit, nothing crazy. no need to worry about race conditions right now
 	cpProcess = pm.FindProcess(szTarget);
 	
 	CXLabel * pLabel = pWnd->GetControls()->GetControl<CXLabel>(IDC_SEARCH);
@@ -43,28 +45,33 @@ void GHLoader::LoadCheat()
 
 	pLabel = pWnd->GetControls()->GetControl<CXLabel>(IDC_GAME);
 	pLabel->SetTxtColor(RGB(0, 150, 255));
+
+	//write injector binary to disk
 	WriteInj();
-	//write dll
-	CResourceWriter rw(hInstance);
-	rw.Write(_T("fileName.dll"), IDCHEAT, BINARY);
+
+	//write dll to disk
+	WriteDll();
+	
 	//execute injector
+	//there's no real way to get feedback (that i know of) from the injector like this
+	//since we're just writing his executable to disk
+	//we're stuck to just simply relying on broihons messageboxes :(
+	//while sacrificing feedback, we retain the ability of adding an easy to implement update function.
+	Inject(); 
 
-	DWORD pid = cpProcess.GetPID();
-	tstring szPid(22, 0);
-#ifdef _UNICODE
-	_itow_s(pid, &szPid[0], 22, 10);
-#else
-	_itoa_s(pid, &szPid[0], 22, 10);
-#endif 
-	szPid.resize(szPid.length());
-	tstring szParam = _T("/p ");
-	szParam.append(szPid.c_str());
-	szParam.append(_T(" /f \"fileName.dll\" /m 0 /o 0"));
-	ShellExecute(NULL, NULL, _T("inj.exe"), szParam.c_str(), NULL, SW_HIDE);
-
+	// say good bye
 	pLabel = pWnd->GetControls()->GetControl<CXLabel>(IDC_SEARCH);
 	pLabel->SetText(L"Hack Loaded!");
 	pLabel->SetTxtColor(RGB(50, 230, 50));
+	
+	using namespace std::chrono_literals;
+	std::this_thread::sleep_for(3s);
+	
+	pLabel->SetText(L"Closing loader... Have fun!");
+	pLabel->SetTxtColor(RGB(200, 200, 200));
+
+	std::this_thread::sleep_for(5s);
+	ExitProcess(0);
 }
 
 GHLFormInfo GHLoader::GHLGetForm()
@@ -74,6 +81,10 @@ GHLFormInfo GHLoader::GHLGetForm()
 	// game name
 	// hack author name
 	// additional info that'll be loaded into a text box in another form.
+	CResourceReader cr(hInstance);
+	ResourceDataVec & vData = cr.ReadIntoVector(IDR_BINARY3, BINARY);
+	if (!vData.empty())
+		vData.clear();
 
 	GHLFormInfo formInfo; //we'll populate this from the resources later but for now...
 	formInfo.clCol = RGB(25, 25, 25);
@@ -99,4 +110,20 @@ void GHLoader::WriteInj()
 
 void GHLoader::WriteDll()
 {
+	CResourceWriter rw(hInstance);
+	//todo: random file name
+	rw.Write(_T("fileName.dll"), IDCHEAT, BINARY);
+}
+
+void GHLoader::Inject()
+{
+	//get proc id and parse it to a string
+	DWORD pid = cpProcess.GetPID();
+	tstring szPid(22, 0);
+	_itot_s(pid, &szPid[0], 22, 10);
+	
+	tstring szParam = _T("/p ");
+	szParam.append(szPid.c_str()); 
+	szParam.append(_T(" /f \"fileName.dll\" /m 0 /o 0"));
+	ShellExecute(NULL, NULL, _T("inj.exe"), szParam.c_str(), NULL, SW_HIDE);
 }

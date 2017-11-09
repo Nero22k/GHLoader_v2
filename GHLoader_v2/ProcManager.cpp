@@ -64,6 +64,7 @@ CProcess ProcManager::FindProcess(tstring szProcessName)
 
 			return *p;
 		}
+		ReloadProcs();
 	}
 /*
 	return FindProcess(EPM_SearchMethod::NAME, &szProcessName);*/

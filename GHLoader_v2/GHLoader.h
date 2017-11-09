@@ -1,7 +1,7 @@
 #pragma once
 #include "GHLMainWindow.h"
 #include "ProcManager.h"
-#include "ResourceWriter.h"
+#include "XResource.h"
 class GHLoader
 {
 public:
@@ -15,7 +15,8 @@ private:
 	GHLFormInfo GHLGetForm();
 	void WriteInj();
 	void WriteDll();
-public:
+	void Inject();
+
 private:
 	std::vector<CXWindow*> vWindows;
 	HINSTANCE hInstance;
