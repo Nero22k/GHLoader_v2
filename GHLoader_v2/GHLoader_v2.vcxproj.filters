@@ -123,6 +123,18 @@
     <ClCompile Include="ProcManager.cpp">
       <Filter>Source Files\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="RandomString.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomNumber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="XGui\XButton.h">
@@ -215,6 +227,18 @@
     <ClInclude Include="ProcManager.h">
       <Filter>Header Files\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="RandomString.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomNumber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GHLoader_v2.rc">
@@ -222,8 +246,27 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="GH Injector - x64.exe" />
-    <None Include="GH Injector - x86.exe" />
-    <None Include="DX9HookHelper.dll" />
+    <None Include="loader.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="GH Injector - x86.exe">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="DX9HookHelper.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="banner.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

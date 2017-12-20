@@ -9,25 +9,58 @@
 #define IDB_INFO	0x8003
 #define IDC_BANNER	0x8010
 
-#define IDINJ64	IDR_BINARY1
-#define IDINJ32	IDR_BINARY2
-#define IDCHEAT	IDR_BINARY3
+#define IDINJ	IDR_BINARY1
+#define IDCHEAT	IDR_BINARY2
 
+//
+//struct GHLFormInfo
+//{
+//	tstring szTitle;
+//	tstring szProcess;
+//	tstring szAuthor;
+//	tstring szInfo;
+//	int x, y, w, h;
+//	COLORREF clCol;
+//};
+//
 
-struct GHLFormInfo
+struct LoaderInfo
 {
-	tstring szTitle;
-	tstring szProcess;
-	tstring szAuthor;
-	tstring szInfo;
-	int x, y, w, h;
-	COLORREF clCol;
+	struct FormInfo
+	{
+		uint uFormTitleLen = 0;
+		std::string szFormTitle;
+		uint uGameTitleLen = 0;
+		std::string szGameTitle;
+		uint uAuthorLen = 0;
+		std::string szAuthor;
+	}formInfo;
+
+	struct LoadSettings
+	{
+		uint uProcNameLen = 0;
+		std::string szProcessName;
+		BOOL bRandomNames = FALSE;
+		BOOL bUPX = FALSE;
+	}loadSettings;
+
+	struct InjSettings
+	{
+		uint iInjMethod = 0;
+		uint iLaunchMethod = 0;
+		BOOL bHideDebug = FALSE;
+		uint iPEHMethod = 0;
+		BOOL bShiftMod = FALSE;
+		BOOL bCleanDD = FALSE;
+		BOOL bUnlinkPEB = FALSE;
+		uint iDelay = 0;
+	}injSettings;
 };
 
 class GHLMainWindow : public CXMainWindow
 {
 public:
-	GHLMainWindow(HINSTANCE hInstance, GHLFormInfo fi);
+	GHLMainWindow(HINSTANCE hInstance, LoaderInfo * li);
 	~GHLMainWindow();
 
 	//we'll probably need to pass in some sort of struct
@@ -36,6 +69,7 @@ public:
 	CXControls* GetControls();
 private:
 	GHLInfoWindow * pInfoWnd;
+	LoaderInfo * loaderInfo;
 	CXFont xfSearch;
 	CXFont xfGameName;
 };

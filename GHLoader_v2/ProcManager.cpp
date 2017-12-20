@@ -13,6 +13,8 @@ ProcManager::~ProcManager()
 
 int ProcManager::ReloadProcs()
 {
+	for (auto p : vProcs)
+		delete p;
 	mProcs.clear();
 	vProcs.clear();
 	return LoadProcs();
@@ -24,6 +26,8 @@ int ProcManager::LoadProcs()
 
 	if (!hSnap)
 		return GetLastError();
+
+	//need to come up with a way to safely terminate this scan cause it crashes on exit from time to time
 
 	PROCESSENTRY32 pe32{ 0 };
 	pe32.dwSize = sizeof(pe32);
@@ -52,22 +56,30 @@ CProcess ProcManager::FindProcess(tstring szProcessName)
 {
 	while (true)
 	{
+		if (bTerminateScans)
+			break;
 		if (vProcs.empty())
 			LoadProcs();
 		if (vProcs.size() == 0)
-			return CProcess();
+			break;
 
 		for (auto p : vProcs)
 		{
-			if (szProcessName != p->GetProcName())
+			if (lstrcmp(szProcessName.c_str(), p->GetProcName().c_str()))
 				continue;
 
 			return *p;
 		}
 		ReloadProcs();
 	}
-/*
-	return FindProcess(EPM_SearchMethod::NAME, &szProcessName);*/
+	return CProcess();
+}
+
+void ProcManager::TerminateScan()
+{
+	bTerminateScans = true;
+
+	while (!bScansTerminated);
 }
 
 ProcVec& ProcManager::Sort(EPM_SortMethod sortMethod)

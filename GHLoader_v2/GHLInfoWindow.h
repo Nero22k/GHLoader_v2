@@ -10,12 +10,14 @@ class GHLInfoWindow : public CXDialog
 {
 public:
 	GHLInfoWindow(CXWindow * pOwner);
+	GHLInfoWindow(CXWindow * pOwner, int x, int y);
 	~GHLInfoWindow();
 	virtual void Show();
 private:
+	void GetInfoText();
 	void CreateControls();
 
 private:
-	
+	tstring szInfo;
 };
 

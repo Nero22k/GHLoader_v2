@@ -72,7 +72,7 @@ bool CXOwnerDrawControl::Create()
 	bool ret = CreateXWindow();
 	if (ret)
 	{
-		SetWindowLong(hWnd, GWL_USERDATA, (LONG)this);
+		SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG)this);
 		SetWindowSubclass(hWnd, OwnerDrawProc, 0, 0);
 	}
 	return ret;

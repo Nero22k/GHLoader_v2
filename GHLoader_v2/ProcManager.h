@@ -33,7 +33,7 @@ public:
 	int LoadProcs();
 	ProcVec& GetProcs();
 	CProcess FindProcess(tstring szProcessName);
-
+	void TerminateScan();
 
 public:
 	ProcVec& Sort(EPM_SortMethod sortMethod);
@@ -44,5 +44,7 @@ private:
 private:
 	ProcMap mProcs;
 	ProcVec vProcs;
+	bool bTerminateScans = false;
+	bool bScansTerminated = false;
 };
 

@@ -192,7 +192,7 @@ void CXWindow::SetBgColor(COLORREF clColor)
 		DeleteObject(hBgr);
 
 	hBgr = CreateSolidBrush(clColor);
-	SetClassLong(hWnd, GCL_HBRBACKGROUND, (LONG)hBgr);
+	SetClassLong(hWnd, GCLP_HBRBACKGROUND, (LONG)hBgr);
 	InvalidateRect(hWnd, NULL, TRUE);
 }
 

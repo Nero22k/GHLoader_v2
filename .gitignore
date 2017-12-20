@@ -243,3 +243,8 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/GHInjector 2.1/GH Injector - x64.exe
+/GHInjector 2.1/GH Injector Config.ini
+/GHInjector 2.1/GH Injector.exe
+/GH Injector.exe
+/GH Injector Config.ini

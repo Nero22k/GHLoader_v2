@@ -34,3 +34,5 @@ typedef std::string tstring;
 typedef UINT uint;
 
 #define DEFLANGID MAKELANGID(LANG_NEUTRAL, SUBLANG_NEUTRAL)
+
+#include "../Utility.h"

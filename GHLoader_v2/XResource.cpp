@@ -37,8 +37,7 @@ CResourceWriter::~CResourceWriter()
 
 size_t CResourceWriter::Write(tstring szFilename, DWORD dwID, DWORD dwType)
 {
-	if (!pResource)
-		GetPtrToData(dwID, dwType);
+	GetPtrToData(dwID, dwType);
 
 	if (pResource)
 	{

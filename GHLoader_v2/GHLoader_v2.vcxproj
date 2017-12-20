@@ -24,6 +24,10 @@
     <ClCompile Include="GHLoader.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="ProcManager.cpp" />
+    <ClCompile Include="RandomNumber.cpp" />
+    <ClCompile Include="RandomString.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Utility.cpp" />
     <ClCompile Include="WinMain.cpp" />
     <ClCompile Include="XGui\XBitmap.cpp" />
     <ClCompile Include="XGui\XButton.cpp" />
@@ -56,7 +60,11 @@
     <ClInclude Include="Includes\stdafx.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="ProcManager.h" />
+    <ClInclude Include="RandomNumber.h" />
+    <ClInclude Include="RandomString.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Utility.h" />
     <ClInclude Include="XGui\XBitmap.h" />
     <ClInclude Include="XGui\XButton.h" />
     <ClInclude Include="XGui\XCheckBox.h" />
@@ -86,12 +94,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="DX9HookHelper.dll" />
-    <None Include="GH Injector - x64.exe">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="GH Injector - x86.exe">
-      <FileType>Document</FileType>
-    </None>
+    <None Include="GH Injector - x86.exe" />
+    <None Include="loader.bin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="banner.bmp" />
+    <Image Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A31E5DD2-DC32-42E4-8AF9-5CB20E383248}</ProjectGuid>
@@ -150,6 +161,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>X:\My Programs\C++ Projects\GHLoader_v2\GHLoader_v2\Includes;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -157,6 +169,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>X:\My Programs\C++ Projects\GHLoader_v2\GHLoader_v2\Includes;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -183,6 +196,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -218,6 +232,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

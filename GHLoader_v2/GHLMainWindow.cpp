@@ -1,16 +1,21 @@
 #include "GHLMainWindow.h"
-
+#include "Utility.h"
 
 void ShowInfoWnd(uintptr_t pWnd)
 {
 	((GHLInfoWindow*)pWnd)->Show();
 }
 
-GHLMainWindow::GHLMainWindow(HINSTANCE hInstance, GHLFormInfo fi)
-	: CXMainWindow(hInstance, fi.szTitle, XMAINWNDCLS, fi.x, fi.y, fi.w, fi.h)
+GHLMainWindow::GHLMainWindow(HINSTANCE hInstance, LoaderInfo * li)
+	: CXMainWindow(hInstance, MBS2WCS(li->formInfo.szFormTitle), XMAINWNDCLS, 250, 150, 400, 300)
 {
 	g_pMainWindow = this;
-	SetBgColor(fi.clCol);
+	SetBgColor(RGB(25,25,25));
+	SetStyle(WS_VISIBLE | WS_SYSMENU);
+
+	this->hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
+	this->hIconSm = hIcon;
+
 	if (!Create())
 	{
 		//error ;P
@@ -22,12 +27,17 @@ GHLMainWindow::GHLMainWindow(HINSTANCE hInstance, GHLFormInfo fi)
 
 	xfGameName = CXFont(_T("Agency FB"), 48);
 	xfGameName.SetItalic(TRUE);
+
+	int x = rcWindow.right - ((rcWindow.right - rcWindow.left) / 2);
+	pInfoWnd = new GHLInfoWindow(this, x, rcWindow.top);
+	loaderInfo = li;
 }
 
 GHLMainWindow::~GHLMainWindow()
 {
 }
 
+#define TT(s) MBS2WCS(s)
 int GHLMainWindow::CreateControls()
 {
 	CXLabel * pSearching =
@@ -47,9 +57,11 @@ int GHLMainWindow::CreateControls()
 			rcRect.top + 40,
 			uWidth-5,
 			uHeight / 5,
-			_T("Half-Life 2"),
+			TT(loaderInfo->formInfo.szGameTitle).c_str(),
 			&xfGameName);
 
+	tstring szAuthor = _T("Author: ");
+	szAuthor += TT(loaderInfo->formInfo.szAuthor);
 	CXLabel* pAuthor =
 		pControls->AddControl<CXLabel>(
 			IDC_LABEL,
@@ -57,7 +69,7 @@ int GHLMainWindow::CreateControls()
 			rcRect.top + 100,
 			uWidth-5,
 			30,
-			_T("Author: Traxin"));
+			szAuthor.c_str());
 
 	CXButton * pInfo =
 		pControls->AddControl<CXButton>(
@@ -68,11 +80,11 @@ int GHLMainWindow::CreateControls()
 			30,
 			_T("More Info"));
 
-	pInfoWnd = new GHLInfoWindow(this);
 	pInfo->SetAction(*(new std::function<void(uintptr_t)>(ShowInfoWnd)));
 	pInfo->SetCommandArgs((uintptr_t)pInfoWnd);
 
-	HBITMAP hBmp = (HBITMAP)LoadImage(NULL, L"banner.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	//HBITMAP hBmp = (HBITMAP)LoadImage(NULL, L"banner.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	HBITMAP hBmp = LoadBitmap(hInstance, MAKEINTRESOURCE(IDB_BITMAP2));
 	pControls->AddControl<CXBitmap>(IDC_BANNER, 0, rcRect.bottom - 75, rcRect.right, 75, L"");
 	pControls->GetControl<CXBitmap>(IDC_BANNER)->Load(hBmp);
 
